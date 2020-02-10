@@ -7,7 +7,8 @@ namespace TechJobsConsole
 {
     class JobData
     {
-        static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
+        static List<Dictionary<string, string>> AllJobs = 
+            new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
         public static List<Dictionary<string, string>> FindAll()
@@ -38,12 +39,14 @@ namespace TechJobsConsole
             return values;
         }
 
-        public static List<Dictionary<string, string>> FindByColumnAndValue(string column, string value)
+        public static List<Dictionary<string, string>> 
+            FindByColumnAndValue(string column, string value)
         {
             // load data, if not already loaded
             LoadData();
 
-            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> jobs =
+                new List<Dictionary<string, string>>();
 
             foreach (Dictionary<string, string> row in AllJobs)
             {
@@ -105,7 +108,10 @@ namespace TechJobsConsole
         /*
          * Parse a single line of a CSV file into a string array
          */
-        private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
+        private static string[] CSVRowToStringArray
+            (string row,
+             char fieldSeparator = ',',
+             char stringSeparator = '\"')
         {
             bool isBetweenQuotes = false;
             StringBuilder valueBuilder = new StringBuilder();

@@ -42,7 +42,8 @@ namespace TechJobsConsole
                     {
                         List<string> results = JobData.FindAll(columnChoice);
 
-                        Console.WriteLine("\n*** All " + columnChoices[columnChoice] + " Values ***");
+                        Console.WriteLine("\n*** All " + columnChoices[columnChoice] 
+                            + " Values ***");
                         foreach (string item in results)
                         {
                             Console.WriteLine(item);
@@ -67,7 +68,8 @@ namespace TechJobsConsole
                     }
                     else
                     {
-                        searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
+                        searchResults = 
+                            JobData.FindByColumnAndValue(columnChoice, searchTerm);
                         PrintJobs(searchResults);
                     }
                 }
@@ -77,7 +79,8 @@ namespace TechJobsConsole
         /*
          * Returns the key of the selected item from the choices Dictionary
          */
-        private static string GetUserSelection(string choiceHeader, Dictionary<string, string> choices)
+        private static string GetUserSelection
+            (string choiceHeader, Dictionary<string, string> choices)
         {
             int choiceIdx;
             bool isValidChoice = false;
@@ -118,7 +121,10 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("printJobs is not implemented yet");
+            someJobs = JobData.FindAll();
+            GetUserSelection("Here are your jobs: ", someJobs);
+            Console.WriteLine(someJobs);
+            //Console.WriteLine("printJobs is not implemented yet");
         }
     }
 }
