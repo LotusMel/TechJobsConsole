@@ -122,9 +122,17 @@ namespace TechJobsConsole
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
             someJobs = JobData.FindAll();
-            GetUserSelection("Here are your jobs: ", someJobs);
-            Console.WriteLine(someJobs);
+            //GetUserSelection("Here are your jobs: ", someJobs);
+            //Console.WriteLine(someJobs);
             //Console.WriteLine("printJobs is not implemented yet");
+
+            foreach (var job in someJobs)
+            {
+                for (int i = 0; i < someJobs.Count; i++)
+                {
+                    Console.WriteLine(someJobs[i]);
+                }
+            }
         }
     }
 }
