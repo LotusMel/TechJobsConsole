@@ -7,7 +7,7 @@ namespace TechJobsConsole
 {
     class JobData
     {
-        static List<Dictionary<string, string>> AllJobs = 
+        public static List<Dictionary<string, string>> AllJobs = 
             new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
@@ -52,13 +52,34 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }
             }
 
             return jobs;
+        }
+
+
+        public static List<Dictionary<string, string>> FindByValue(string value)
+        {
+            LoadData();
+
+            List<Dictionary<string, string>> valueSearch = new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                foreach (KeyValuePair<string, string> column in row)
+                {
+                    if (column.Value.ToLower().Contains(value))
+                    {
+                        valueSearch.Add(row);
+                    }
+                }
+            }
+
+            return valueSearch;
         }
 
         /*
@@ -120,7 +141,7 @@ namespace TechJobsConsole
             // Loop through the row string one char at a time
             foreach (char c in row.ToCharArray())
             {
-                if ((c == fieldSeparator && !isBetweenQuotes))
+                if (c == fieldSeparator && !isBetweenQuotes)
                 {
                     rowValues.Add(valueBuilder.ToString());
                     valueBuilder.Clear();
